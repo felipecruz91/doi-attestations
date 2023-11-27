@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # Initialize variables
@@ -28,16 +28,20 @@ done
 
 
 SBOM=$(docker buildx imagetools inspect $image --format '{{ json (index .SBOM) }}')
-if [ "$SBOM" = "{}" ]; then
+if [ "$SBOM" == "{}" ]; then
     SBOM_CHECK=❌
-else
+elif [[ "$SBOM" == "" ]]; then
+    SBOM_CHECK=❌
+else 
     SBOM_CHECK=✅
 fi
 
 Provenance=$(docker buildx imagetools inspect $image --format '{{ json (index .Provenance) }}')
-if [ "$Provenance" = "{}" ]; then
+if [ "$Provenance" == "{}" ]; then
     PROVENANCE_CHECK=❌
-else
+elif [[ "$Provenance" == "" ]]; then
+    PROVENANCE_CHECK=❌
+else 
     PROVENANCE_CHECK=✅
 fi
 

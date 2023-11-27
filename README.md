@@ -19,11 +19,10 @@ sort doi.txt | parallel -j 8 ./check-attestations.sh --image {} > output.txt 2>&
 Example of output:
 
 ```txt
-[✅] SBOM - [✅] Provenance - [aerospike]
-ERROR: docker.io/library/aerospike:latest: not found
-ERROR: docker.io/library/aerospike:latest: not found
-[❌] SBOM - [❌] Provenance - [amazoncorretto]
-[❌] SBOM - [❌] Provenance - [amazonlinux]
-[❌] SBOM - [❌] Provenance - [alt]
+[❌] SBOM - [❌] Provenance - [debian]
+[✅] SBOM - [✅] Provenance - [cassandra]
+[✅] SBOM - [✅] Provenance - [docker]
+[❌] SBOM - [❌] Provenance - [eclipse-mosquitto]
+[❌] SBOM - [❌] Provenance - [eggdrop]
 ...
 ```
